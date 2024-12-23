@@ -1,20 +1,23 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../config';
 
-const useAuthRedirect = () => {
+const useAuthRedirect = (url : string) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/me', {
-            headers : {
-                authorization : `Bearer ${localStorage.getItem('token')}`
+        const checkAuth = async () => {
+            try {
+                await axios.get(`${BACKEND_URL}/${url}`,{
+                    withCredentials : true
+                });
+            } catch (err) {
+                navigate('/');
             }
-        })
-        .then((res: any) => {
-            const loggedIn = res.data.loggedIn;
-            if(!loggedIn) navigate('/signin')
-        })
+        }
+
+        checkAuth();
     }, [navigate])
 }
 

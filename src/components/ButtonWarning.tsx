@@ -8,11 +8,11 @@ interface ButtonWarning {
 }   
 
 const ButtonWarning: React.FC<ButtonWarning> = ({label, buttonText, to}) => {
-    return <div className="py-2 text-sm flex justify-center">
+    return <div className="py-2 text-sm flex justify-center text-sky-900">
     <div>
       {label}
     </div>
-    <Link className="pointer underline pl-1 cursor-pointer" to={to}>
+    <Link className="pointer font-semibold underline:false pl-1 cursor-pointer" to={to}>
       {buttonText}
     </Link>
   </div>

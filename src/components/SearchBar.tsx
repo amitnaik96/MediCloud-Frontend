@@ -8,16 +8,15 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({placeholder, onChange, handleSubmit}) => {
     return <div>
-        <form className="max-w-md mx-auto">   
-            <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+        <form className="mx-2 max-w-[700px] sm:mx-auto mb-4">   
             <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <svg className="w-3 h-3 text-sky-600 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input onChange={ onChange } type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder={placeholder} required />
-                <button onClick={ handleSubmit } type="submit" className=" absolute end-2.5 bottom-2.5 text-white bg-gray-800 hover:bg-gray-900  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
+                <input onChange={ onChange } type="search" id="default-search" className="block w-full p-4 ps-10 text-sm  border border-sky-300 rounded-md focus:outline-none text-sky-600" placeholder={placeholder} required />
+                <button onClick={ handleSubmit } type="submit" className=" absolute end-2.5 bottom-2.5 text-white bg-sky-900 hover:bg-sky-700  focus:outline-none font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
             </div>
         </form>
     </div>

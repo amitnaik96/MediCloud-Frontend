@@ -4,14 +4,15 @@ interface InputBoxProps {
     label : string;
     placeholder : string;
     onChange : (e:React.ChangeEvent<HTMLInputElement>) => void;
+    type? : string;
 }
 
-const InputBox:React.FC<InputBoxProps> = ({label, placeholder, onChange}) => {
+const InputBox:React.FC<InputBoxProps> = ({label, placeholder, onChange, type}) => {
     return <div>
-        <div className="text-sm font-medium text-left py-2">
+        <div className="text-sm font-medium text-left py-2 text-sky-900">
             {label}
         </div>
-        <input onChange={onChange} placeholder={placeholder} className='bg-gray-50 w-full px-2 py-1 border rounded border-slate-200'/>
+        <input onChange={onChange} type={type || "text"} placeholder={placeholder} className="border border-sky-300 text-gray-900 text-sm rounded-lg focus:outline-none w-full p-2.5" required />
     </div>
 }
 
