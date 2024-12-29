@@ -3,17 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
 import useAuthRedirect from '../hooks/useAuthRedirect';
-
-interface DoctorInterface {
-    name : string;
-    age : number;
-    username : string;
-    details : {
-        degree : string;
-        specialist : string;
-        yoe : number;
-    }
-}
+import { DoctorInterface } from "../types/doctor";
 
 const Doctor:React.FC = () => {
     useAuthRedirect('isadmin');
@@ -21,11 +11,9 @@ const Doctor:React.FC = () => {
         name : "",
         age : 0,
         username : "",
-        details : {
-            degree : "",
-            specialist : "",
-            yoe : 0
-        }
+        degree : "",
+        specialist : "",
+        yoe : 0
     });
     const { id } = useParams();
 
@@ -36,7 +24,7 @@ const Doctor:React.FC = () => {
         .then(res => {
             setDoctor(res.data.response);
         })
-    });
+    }, []);
 
     return <div className="flex justify-center h-screen bg-gradient-to-b from-sky-100 via-white to-sky-5">
         <div className="flex flex-col justify-center w-full max-w-2xl">
@@ -47,7 +35,7 @@ const Doctor:React.FC = () => {
 
                 <div className="mb-2">
                     <div className="text-sm text-sky-900 font-medium text-left py-2">Name</div>
-                    <input type="text" defaultValue={doctor.name} className=" border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input readOnly type="text" defaultValue={doctor.name} className=" border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
 
                 <div className="mb-2">
@@ -59,7 +47,7 @@ const Doctor:React.FC = () => {
                         </div>
                         <div className="text-sm text-sky-900 font-medium text-left py-2">Email</div>
                     </div>
-                    <input type="text" defaultValue={doctor.username} className="mb-1 border border-gray-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input readOnly type="text" defaultValue={doctor.username} className="mb-1 border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     <div className="text-xs text-sky-700">This email will be used for login and communications</div>
                 </div>
 
@@ -75,17 +63,17 @@ const Doctor:React.FC = () => {
                             </div>
                             <div className="text-sm text-sky-900 font-medium text-left py-2">Degree</div>
                         </div>
-                        <input type="text" defaultValue={doctor.details.degree} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input readOnly type="text" defaultValue={doctor.degree} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                     <div className="w-1/2">
                         <div className="text-sky-900 text-sm font-medium text-left py-2">Specialist</div>
-                        <input type="text" defaultValue={doctor.details.specialist} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input readOnly type="text" defaultValue={doctor.specialist} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                 </div>
 
                 <div className="mb-2">
                     <div className="text-sky-900 text-sm font-medium text-left py-2">Year of experience</div>
-                    <input type="text" defaultValue={doctor.details.yoe} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input readOnly type="text" defaultValue={doctor.yoe} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
             </div>
         </div>

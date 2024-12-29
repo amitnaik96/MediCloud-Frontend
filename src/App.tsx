@@ -24,7 +24,7 @@ const App = () => {
         <Route path='/adddoctor' element={<AddDoctor/>} />
         <Route path='/patient/:id' element={<Patient/>} />
         <Route path='/addpatient' element={<AddPatient/>} />
-        <Route path='/searchcard' element={<DoctorCard name="Amit Naik" username={"amitnaik@gmail.com"} to="dsv" />}/>
+        <Route path="*" element={<Dashboard />} />
       </Routes>
       <Footer />
     </BrowserRouter>  

@@ -19,7 +19,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex mt-2 mr-3">
                     <Link to={'/signin'} className="mr-2">
-                        <button type="button" className="bg-white sm:w-24 text-white hover:bg-slate-50 focus:outline-none border sm:border-sky-500 rounded-md font-medium text-sm px-3 sm:px-5 py-2.5 mb-2">
+                        <button type="button" className="bg-white sm:w-24 text-white hover:bg-slate-100  focus:outline-none border sm:border-sky-500 rounded-md font-medium text-sm px-3 sm:px-5 py-2.5 mb-2">
                             <div className="sm:flex">
                                 <div className="flex flex-col justify-center mr-1">   
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 text-sky-900">

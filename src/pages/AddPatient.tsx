@@ -3,17 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BACKEND_URL } from '../config';
 import useAuthRedirect from '../hooks/useAuthRedirect';
-
-interface AddPatientProps {
-    name : string;
-    phoneNo : string;
-    age : number;
-    weight : string;
-    bloodGroup : string;
-    married : boolean;
-    insurance : boolean;
-    note : string;
-}
+import { AddPatientProps } from "../types/patient";
 
 const AddPatient = () => {
     useAuthRedirect('me');
@@ -39,6 +29,14 @@ const AddPatient = () => {
         navigate(`/patient/${response.data.id}`);
     }
 
+    function handleChange(e:any){
+        const {name, value} = e.target;
+        setPatient((prev) => ({
+            ...prev, 
+            [name]: value
+        }));
+    }
+
     return <div className="flex justify-center h-screen bg-gradient-to-b from-sky-100 via-white to-sky-5">
         <div className=" flex flex-col justify-center w-full max-w-2xl">
             <div className="mt-20 px-6 py-6 border border-sky-300 bg-white rounded-md">
@@ -48,7 +46,7 @@ const AddPatient = () => {
 
                 <div className="mb-2">
                     <div className="text-sm text-sky-900 font-medium text-left py-2">Name</div>
-                    <input onChange={(e:any) => setPatient((prev) => ({...prev, name : e.target.value}))} type="text" className=" border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="name" onChange={handleChange} type="text" className=" border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
 
                 <div className="mb-2">
@@ -60,25 +58,25 @@ const AddPatient = () => {
                         </div>
                         <div className="text-sm font-medium text-left py-2 text-sky-900">Phone number</div>
                     </div>
-                    <input onChange={(e:any) => setPatient((prev) => ({...prev, phoneNo : e.target.value}))} type="text" className="mb-1 border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="phoneNo" onChange={handleChange} type="text" className="mb-1 border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     <div className="text-xs text-sky-700">This phone no will be used for communication</div>
                 </div>
 
                 <div className="flex w-full mb-4">
                     <div className="mr-4 w-1/2">
                         <div className="text-sm text-sky-900 font-medium text-left py-2">Age</div>
-                        <input onChange={(e:any) => setPatient((prev) => ({...prev, age : Number(e.target.value)}))} type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input name="age" onChange={handleChange} type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                     <div className="w-1/2">
                         <div className="text-sm font-medium text-sky-900 text-left py-2">Blood Group</div>
-                        <input onChange={(e:any) => setPatient((prev) => ({...prev, bloodGroup : e.target.value}))} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input name="bloodGroup" onChange={handleChange} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                 </div>
 
                 <div className="flex w-full">
                     <div className="mr-4 w-1/2">
                         <div className="text-sm text-sky-900 font-medium text-left py-2">Weight(kg)</div>
-                        <input onChange={(e:any) => setPatient((prev) => ({...prev, weight : e.target.value}))} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input name="weight" onChange={handleChange} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                     <div className="w-1/2">
                         <div className="text-sm font-medium text-left py-2 text-sky-900">Martial Status</div>
@@ -103,7 +101,7 @@ const AddPatient = () => {
 
                 <div className="mb-4">
                     <div className="text-sm font-medium text-sky-900 text-left py-2">Notes</div>
-                    <textarea onChange={(e:any) => setPatient((prev) => ({...prev, note : e.target.value}))} rows={4} className=" block p-2 w-full text-sm text-black  border border-sky-300 rounded-md focus:outline-none"></textarea>
+                    <textarea name="note" onChange={handleChange} rows={4} className=" block p-2 w-full text-sm text-black  border border-sky-300 rounded-md focus:outline-none"></textarea>
                 </div>
 
                 <div className="flex w-full">

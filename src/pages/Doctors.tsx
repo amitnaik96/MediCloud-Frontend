@@ -6,12 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
 import NoResults from '../components/NoResults';
 import useAuthRedirect from '../hooks/useAuthRedirect';
+import { DoctorsInterface } from "../types/doctor";
 
-interface DoctorInterface {
-    id : number;
-    name : string;
-    username : string;
-}
 
 const Doctors: React.FC = () => {
     useAuthRedirect('isadmin');
@@ -41,9 +37,17 @@ const Doctors: React.FC = () => {
         })
         if(Array.isArray(res.data.response) && res.data.response.length > 0){
             setDoctors(res.data.response);
+            setPresent(false);
         }
         else{
             setPresent(true);
+        }
+    }
+
+    //@ts-ignore
+    function handleKeyDown(e: React.KeyboardEvent) {
+        if (e.key === 'Enter') {
+            handleSubmit(e as any); // TypeScript casting
         }
     }
 
@@ -58,9 +62,9 @@ const Doctors: React.FC = () => {
                                 <p className="px-3 sm:px-0 text-sky-700 mb-3 text-md lg:text-md">Enter doctor's email to access their medical records securely.</p>
                             </div>
                             <div className="flex flex-col justify-center ml-3 sm:ml-0">
-                                <button onClick={() => navigate('/adddoctor')}  type="button" className=" text-white bg-sky-900 hover:bg-sky-700 focus:outline-none rounded-md text-sm px-4 py-2.5 w-40 sm:w-full">
-                                                <div className='flex justify-around'>
-                                                <div className="flex flex-col justify-center mr-2">
+                                <button onClick={() => navigate('/adddoctor')}   type="button" className=" text-white bg-sky-900 hover:bg-sky-700 focus:outline-none rounded-md text-sm px-3 sm:px-4 py-2.5 w-32 sm:w-full">
+                                                <div className='flex sm:justify-around'>
+                                                <div className="flex flex-col justify-center mr-1 sm:mr-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                     </svg>
@@ -78,7 +82,7 @@ const Doctors: React.FC = () => {
                         </div>
                         {present? <NoResults/> : 
 
-                            doctors.map((doctor : DoctorInterface) => {
+                            doctors.map((doctor : DoctorsInterface) => {
                                 // return <Single key={patient.id} label={`${patient.name} - ${patient.phone_no}`} to={`/patient/${patient.id}`}/> 
                                 return <DoctorCard key={doctor.id} name={`Dr. ${doctor.name}`} username={doctor.username} to={`/doctor/${doctor.id}`}/> 
                             })

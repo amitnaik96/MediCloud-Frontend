@@ -27,7 +27,7 @@ const Dashboard:React.FC = () => {
                                             } catch (err) {
                                                 toast.error('You are not authorized. Please login');
                                             }
-                                        }} type="button" className=" w-full text-white bg-sky-900 hover:bg-sky-700 focus:outline-none focus:ring- rounded-md text-sm px-6 py-2.5 mb-2 ">
+                                        }} type="button" className=" w-full text-white bg-sky-900 hover:bg-sky-700 focus:outline-none  rounded-md text-sm px-6 py-2.5 mb-2 ">
                                             <div className='flex '>
                                                 Patients 
                                                 <div className="flex flex-col justify-center">

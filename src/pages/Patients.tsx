@@ -7,12 +7,8 @@ import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import NoResults from '../components/NoResults';
 import useAuthRedirect from '../hooks/useAuthRedirect';
+import { PatientsInterface } from "../types/patient";
 
-interface PatientInterface {
-    id : number;
-    name : string;
-    phone_no : string; 
-}
 
 const Patients: React.FC = () => {
     useAuthRedirect('me');
@@ -41,9 +37,17 @@ const Patients: React.FC = () => {
         });
         if(Array.isArray(res.data.response) && res.data.response.length > 0){
             setPatients(res.data.response);
+            setPresent(false);
         }
         else{
-            setPresent(true);
+            setPresent(true); 
+        }
+    }
+
+    //@ts-ignore
+    function handleKeyDown(e: React.KeyboardEvent) {
+        if (e.key === 'Enter') {
+            handleSubmit(e as any); // TypeScript casting
         }
     }
 
@@ -58,9 +62,9 @@ const Patients: React.FC = () => {
                         <p className="px-3 sm:px-0  mb-3 text-md text-sky-700 lg:text-md">Enter a patient's phone number to access their medical records securely.</p>
                     </div>
                     <div className="flex flex-col justify-center ml-3 sm:ml-0">
-                        <button onClick={() => navigate('/addpatient')}   type="button" className=" text-white bg-sky-900 hover:bg-sky-700 focus:outline-none rounded-md text-sm px-4 py-2.5 w-40 sm:w-full">
-                                        <div className='flex justify-around'>
-                                        <div className="flex flex-col justify-center sm:mr-2">
+                        <button onClick={() => navigate('/addpatient')}   type="button" className=" text-white bg-sky-900 hover:bg-sky-700 focus:outline-none rounded-md text-sm px-3 sm:px-4 py-2.5 w-32 sm:w-full">
+                                        <div className='flex sm:justify-around'>
+                                        <div className="flex flex-col justify-center mr-1 sm:mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
@@ -77,7 +81,7 @@ const Patients: React.FC = () => {
                     <SearchBar placeholder={"Enter patient's phone number"} onChange={(e) => setFilter(e.target.value)} handleSubmit={handleSubmit}/>
                 </div>
                 {present?  <NoResults />  :
-                    patients.map((patient : PatientInterface) => {
+                    patients.map((patient : PatientsInterface) => {
                         return <PatientCard key={patient.id} name={patient.name} phoneNo={patient.phone_no} to={`/patient/${patient.id}`}/> 
                     })
                 }

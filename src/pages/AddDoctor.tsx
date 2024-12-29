@@ -3,17 +3,7 @@ import axios from 'axios';
 import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import useAuthRedirect from '../hooks/useAuthRedirect';
-
-interface AddDoctorInterface {
-    name : string;
-    username : string;
-    password : string;
-    admin : boolean;
-    degree : string;
-    specialist : string;
-    yoe : number;
-}
-
+import { AddDoctorInterface } from "../types/doctor";
 
 const AddDoctor = () => {
     useAuthRedirect('isadmin');
@@ -39,6 +29,13 @@ const AddDoctor = () => {
         navigate(`/doctor/${response.data.id}`);
     }
 
+    function handleChange(e:any){
+        const {name, value} = e.target;
+        setDoctor((prev) => ({
+            ...prev, 
+            [name]: value
+        }));
+    }
 
     return <div className="flex justify-center h-screen bg-gradient-to-b from-sky-100 via-white to-sky-5">
         <div className="flex flex-col justify-center w-full max-w-2xl">
@@ -49,7 +46,7 @@ const AddDoctor = () => {
 
                 <div className="mb-2">
                     <div className="text-sm text-sky-900  font-medium text-left py-2">Name</div>
-                    <input onChange={(e:any) => setDoctor((prev) => ({...prev, name: e.target.value}))} type="text" className=" border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="name" onChange={handleChange} type="text" className=" border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
 
                 <div className="mb-2">
@@ -61,13 +58,13 @@ const AddDoctor = () => {
                         </div>
                         <div className="text-sm text-sky-900 font-medium text-left py-2">Email</div>
                     </div>
-                    <input onChange={(e:any) => setDoctor((prev) => ({...prev, username: e.target.value}))} type="text" className="mb-1 border border-gray-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="username" onChange={handleChange} type="text" className="mb-1 border border-gray-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     <div className="text-xs text-sky-700">This email will be used for login and communications</div>
                 </div>
 
                 <div className="mb-2">
                     <div className="text-sm text-sky-900 font-medium text-left py-2">Password</div>
-                    <input  onChange={(e:any) => setDoctor((prev) => ({...prev, password: e.target.value}))} type="password" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="password" onChange={handleChange} type="password" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     <div className="text-xs text-sky-700">remember credentials for login</div>
                 </div>
 
@@ -83,17 +80,17 @@ const AddDoctor = () => {
                             </div>
                             <div className="text-sm text-sky-900 font-medium text-left py-2">Degree</div>
                         </div>
-                        <input onChange={(e:any) => setDoctor((prev) => ({...prev, degree: e.target.value}))} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input name="degree" onChange={handleChange} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                     <div className="w-1/2">
                         <div className="text-sm font-medium text-left py-2 text-sky-900">Specialist</div>
-                        <input onChange={(e:any) => setDoctor((prev) => ({...prev, specialist: e.target.value}))} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input name="specialist" onChange={handleChange} type="text" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                 </div>
 
                 <div className="mb-4">
                     <div className="text-sm font-medium text-sky-900 text-left py-2">Year of experience</div>
-                    <input onChange={(e:any) => setDoctor((prev) => ({...prev, yoe: Number(e.target.value)}))}  type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="yoe" onChange={handleChange}  type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
 
                 <div className="mb-4 flex p-3 border border-sky-300 rounded-md">
