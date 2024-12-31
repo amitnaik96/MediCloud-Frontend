@@ -7,7 +7,6 @@ import Doctor from "./pages/Doctor"
 import AddDoctor from "./pages/AddDoctor"
 import Patient from "./pages/Patient"
 import AddPatient from "./pages/AddPatient"
-import DoctorCard from "./components/DoctorCard";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
