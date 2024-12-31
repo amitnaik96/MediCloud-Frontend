@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://medicloud-server.realamit.xyz"
+export const BACKEND_URL="https://medicloud-server.realamit.xyz/api/v1"
