@@ -26,7 +26,6 @@ const Doctor:React.FC = () => {
     }, []);
 
     return <div className="flex justify-center h-screen bg-gradient-to-b from-sky-100 via-white to-sky-5">
-        {doctor.yoe}
         <div className="flex flex-col justify-center w-full max-w-2xl">
             <div className="px-6 py-6 border border-sky-300 bg-white rounded-md">
 
@@ -73,7 +72,7 @@ const Doctor:React.FC = () => {
 
                 <div className="mb-2">
                     <div className="text-sky-900 text-sm font-medium text-left py-2">Year of experience</div>
-                    <input readOnly type="text" defaultValue={String(doctor.yoe)} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input readOnly type="number" value={doctor.yoe} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
             </div>
         </div>
