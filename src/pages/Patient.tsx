@@ -91,7 +91,7 @@ const Patient:React.FC = () => {
                 <div className="flex w-full mb-4">
                     <div className="mr-4 w-1/2">
                         <div className="text-sm text-sky-900 font-medium text-left py-2">Age</div>
-                        <input name="age" onChange={handleChange} type="text" defaultValue={patient.age} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <input name="age" onChange={handleChange} type="number" value={patient.age} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                     <div className="w-1/2">
                         <div className="text-sm text-sky-900 font-medium text-left py-2">Blood Group</div>
