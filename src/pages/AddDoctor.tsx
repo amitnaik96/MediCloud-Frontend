@@ -4,6 +4,7 @@ import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import useAuthRedirect from '../hooks/useAuthRedirect';
 import { AddDoctorInterface } from "../types/doctor";
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddDoctor = () => {
     useAuthRedirect('isadmin');
@@ -20,13 +21,17 @@ const AddDoctor = () => {
     });
 
     async function handleSubmit(){
-        const response:any = await axios.post(`${BACKEND_URL}/doctor`,{
-            ...doctor
-        },
-        {
-            withCredentials : true
-        });
-        navigate(`/doctor/${response.data.id}`);
+        try {
+            const response:any = await axios.post(`${BACKEND_URL}/doctor`,{
+                ...doctor
+            },
+            {
+                withCredentials : true
+            });
+            navigate(`/doctor/${response.data.id}`);
+        } catch (err) {
+            toast.error('Invalid details!');
+        }
     }
 
     function handleChange(e:any){
@@ -90,7 +95,14 @@ const AddDoctor = () => {
 
                 <div className="mb-4">
                     <div className="text-sm font-medium text-sky-900 text-left py-2">Year of experience</div>
-                    <input name="yoe" onChange={handleChange}  type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input name="yoe" 
+                   onChange={(e: any) => 
+                    setDoctor(prev => ({
+                      ...prev, 
+                      yoe: Number(e.target.value) // Ensure the value is converted to a number
+                    }))
+                  } 
+                    type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
 
                 <div className="mb-4 flex p-3 border border-sky-300 rounded-md">
@@ -133,6 +145,7 @@ const AddDoctor = () => {
                  </div>
             </div>
         </div>
+        <ToastContainer position="top-center"/>
    </div>
 }
 

@@ -4,6 +4,7 @@ import axios from "axios";
 import { BACKEND_URL } from '../config';
 import useAuthRedirect from '../hooks/useAuthRedirect';
 import { AddPatientProps } from "../types/patient";
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddPatient = () => {
     useAuthRedirect('me');
@@ -21,12 +22,16 @@ const AddPatient = () => {
     });
 
     async function handleSubmit(){
-        const response = await axios.post(`${BACKEND_URL}/patient`,{
-            ...patient
-        },{
-            withCredentials : true
-        });
-        navigate(`/patient/${response.data.id}`);
+        try {
+            const response = await axios.post(`${BACKEND_URL}/patient`,{
+                ...patient
+            },{
+                withCredentials : true
+            });
+            navigate(`/patient/${response.data.id}`);
+        } catch (err) {
+            toast.error('Invalid details!');
+        }   
     }
 
     function handleChange(e:any){
@@ -64,8 +69,12 @@ const AddPatient = () => {
 
                 <div className="flex w-full mb-4">
                     <div className="mr-4 w-1/2">
-                        <div className="text-sm text-sky-900 font-medium text-left py-2">Age</div>
-                        <input name="age" onChange={handleChange} type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                        <div className="text-sm text-sky-900 font
+                        -medium text-left py-2">Age</div>
+                        <input name="age"   onChange={(e: any) => setPatient(prev => ({
+                            ...prev, 
+                            age: Number(e.target.value) // Corrected 'targte' to 'target'
+                        }))}  type="number" className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                     </div>
                     <div className="w-1/2">
                         <div className="text-sm font-medium text-sky-900 text-left py-2">Blood Group</div>
@@ -120,6 +129,7 @@ const AddPatient = () => {
                  </div>
             </div>
         </div>
+        <ToastContainer position="top-center"/>
    </div>
 }
 
