@@ -10,7 +10,6 @@ export interface AddDoctorInterface {
 
 export interface DoctorInterface {
     name : string;
-    age : number;
     username : string;
     degree : string;
     specialist : string;
