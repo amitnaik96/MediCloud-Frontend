@@ -73,7 +73,7 @@ const Doctor:React.FC = () => {
 
                 <div className="mb-2">
                     <div className="text-sky-900 text-sm font-medium text-left py-2">Year of experience</div>
-                    <input readOnly type="text" defaultValue={doctor.yoe.toString()} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
+                    <input readOnly type="text" defaultValue={doctor?.yoe || 'no bro'} className="border border-sky-300 text-gray-900 text-sm rounded-md block w-full p-2 focus:outline-none"/>
                 </div>
             </div>
         </div>
