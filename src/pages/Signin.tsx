@@ -35,7 +35,7 @@ const Signin: React.FC = () => {
        
           }}/>
         </div>
-        <ButtonWarning label={"Don't have an account?"} buttonText={"Contact admin"} to="mailto:amitnaikkwr@gmail.com"/>
+        <ButtonWarning label={"Don't have an account?"} buttonText={"Contact admin"} to="mailto:medicloudsecure@gmail.com"/>
       </div>
     </div>
     <ToastContainer position="top-center"/>
