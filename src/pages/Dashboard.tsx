@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BACKEND_URL } from '../config';
 import { ToastContainer, toast } from 'react-toastify';
-
+import 'animate.css';
 
 const Dashboard:React.FC = () => {
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Dashboard:React.FC = () => {
     return  <div className='h-screen flex justify-center'>
                     <div className='w-full flex flex-col justify-center text-center bg-gradient-to-b from-sky-100 via-white to-sky-5'>  
                         <div>
-                            <div>
+                            <div className="animate__animated animate__fadeInLeft">
                                 <h1 className="mb-2 text-3xl text-sky-900 font-extrabold md:text-3xl lg:text-5xl ml-10 px-2 text-left sm:px-0 sm:ml-0 sm:text-center">
                                     Welcome to MediCloud.
                                 </h1>
