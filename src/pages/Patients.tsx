@@ -65,8 +65,8 @@ const Patients: React.FC = () => {
                         <button onClick={() => navigate('/addpatient')}   type="button" className=" text-white bg-sky-900 hover:bg-sky-700 focus:outline-none rounded-md text-sm px-3 sm:px-4 py-2.5 w-32 sm:w-full">
                                         <div className='flex sm:justify-around'>
                                         <div className="flex flex-col justify-center mr-1 sm:mr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
                                         </div>
                                         <div className="font-semibold">

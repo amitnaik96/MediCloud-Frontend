@@ -8,10 +8,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
 import { ToastContainer, toast } from 'react-toastify';
+import { useSetAtom } from 'jotai';
+import { authAtom } from '../store/atoms';
 
 const Signin: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const setLoggedIn = useSetAtom(authAtom);
     const navigate = useNavigate();
 
     return  <div className="h-screen flex justify-center bg-gradient-to-b from-sky-100 via-white to-sky-5">
@@ -28,6 +31,7 @@ const Signin: React.FC = () => {
                 username,
                 password
               },{ withCredentials : true });
+              setLoggedIn(true);
               navigate('/');
             } catch (err) {
               toast.error('Invalid credentials!');
