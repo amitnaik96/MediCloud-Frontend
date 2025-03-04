@@ -9,7 +9,7 @@ A responsive frontend for MediCloud, built with React and deployed on Cloudflare
     git clone https://github.com/amitnaik96/MediCloud-Frontend.git
     cd MediCloud-Frontend
 ```
-### **2. Install dependencies and update backend url in config.ts**  
+### **2. Install dependencies and update backend url in ./src/config.ts**  
 ```bash
     npm install
 ```
@@ -18,3 +18,5 @@ A responsive frontend for MediCloud, built with React and deployed on Cloudflare
     npm run dev
 ```
 
+## License
+Distributed under the [MIT](https://github.com/amitnaik96/MediCloud-Frontend/blob/master/LICENSE) License .
