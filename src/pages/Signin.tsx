@@ -17,7 +17,7 @@ const Signin: React.FC = () => {
     const setLoggedIn = useSetAtom(authAtom);
     const navigate = useNavigate();
 
-    return  <div className="h-screen flex justify-center bg-gradient-to-b from-sky-100 via-white to-sky-5">
+    return  <div className="h-screen flex justify-center">
     <div className="flex flex-col justify-center">
       <div className="border border-sky-300 rounded-lg bg-white sm:w-96 p-2 h-max px-8 py-4">
         <Heading label={"MediCloud"} />

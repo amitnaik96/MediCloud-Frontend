@@ -18,15 +18,13 @@ const Navbar = () => {
     }, []);
 
     return <div>
-                <div className="flex justify-between *:px-4 border border-b border-sky-200 bg-gradient-to-b from-sky-100 via-white to-sky-5">
+                <div className="flex justify-between *:px-4 border border-b border-sky-50 bg-transparent">
                 <div className="flex sm:items-center">
                     <div className="flex flex-col justify-center mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 text-sky-600">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#276687" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="size-5lucide lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
                     </div>
-                    <Link to={'/'} className="flex flex-col justify-center text-xl font-bold text-sky-900">
-                        <div >MediCloud.</div>
+                    <Link to={'/'} className="flex flex-col justify-center text-xl font-bold">
+                        <div ><span className="text-sky-900">Medi</span>Cloud.</div>
                     </Link>
                 </div>
                 <div className="mt-2 mr-3">

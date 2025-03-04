@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
 import NoResults from '../components/NoResults';
-import useAuthRedirect from '../hooks/useAuthRedirect';
+import { useAuthRedirect } from '../hooks/useAuthRedirect';
 import { DoctorsInterface } from "../types/doctor";
 
 
@@ -51,7 +51,7 @@ const Doctors: React.FC = () => {
         }
     }
 
-    return <div className='h-screen flex justify-center bg-gradient-to-b from-sky-100 via-white to-sky-5'>
+    return <div className='h-screen flex justify-center '>
                 <div className='flex flex-col justify-center'>
                     <div className="">
                         <div className="sm:flex mb-5">

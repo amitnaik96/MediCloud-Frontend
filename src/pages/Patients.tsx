@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import NoResults from '../components/NoResults';
-import useAuthRedirect from '../hooks/useAuthRedirect';
+import { useAuthRedirect } from '../hooks/useAuthRedirect';
 import { PatientsInterface } from "../types/patient";
 
 
@@ -51,7 +51,7 @@ const Patients: React.FC = () => {
         }
     }
 
-    return <div className='h-screen flex justify-center bg-gradient-to-b from-sky-100 via-white to-sky-5'>
+    return <div className='h-screen flex justify-center'>
         <div className='flex flex-col justify-center'>
             <div className="">
                 <div className="sm:flex mb-5">

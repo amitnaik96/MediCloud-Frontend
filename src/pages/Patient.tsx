@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
-import useAuthRedirect from '../hooks/useAuthRedirect';
+import { useAuthRedirect } from '../hooks/useAuthRedirect';
 import { ToastContainer, toast } from 'react-toastify';
 import { PatientProps } from "../types/patient";
 
@@ -63,7 +63,7 @@ const Patient:React.FC = () => {
     }
 
 
-   return <div className="flex justify-center h-screen bg-gradient-to-b from-sky-100 via-white to-sky-5">
+   return <div className="flex justify-center h-screen ">
         <div className="flex flex-col justify-center w-full max-w-2xl">
             <div className="mt-20 px-6 py-6 border border-sky-300 bg-white rounded-md ">
 

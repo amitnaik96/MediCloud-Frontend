@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
 
-const useAuthRedirect = (url : string) => {
+export const useAuthRedirect = (url : string) => {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,4 +21,3 @@ const useAuthRedirect = (url : string) => {
     }, [navigate])
 }
 
-export default useAuthRedirect;

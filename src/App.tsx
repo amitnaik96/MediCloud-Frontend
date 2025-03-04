@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 const App = () => {
-  return <>
+  return <div className="bg-gradient-to-b from-sky-50 via-white">
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -27,7 +27,7 @@ const App = () => {
       </Routes>
       <Footer />
     </BrowserRouter>  
-  </>
+  </div>
 }
 
 export default App;

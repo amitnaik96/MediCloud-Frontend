@@ -9,10 +9,19 @@ const Dashboard:React.FC = () => {
     const navigate = useNavigate();
     
     return  <div className='h-screen flex justify-center'>
-                    <div className='w-full flex flex-col justify-center text-center bg-gradient-to-b from-sky-100 via-white to-sky-5'>  
+                    <div className='w-full flex flex-col justify-center text-center'>  
                         <div>
+                        <div className="inline-block px-4 py-1.5 rounded-full bg-[#e0f2fe] text-[#0369a1] font-medium text-sm mb-6 animate-fade-in">
+            Secure Healthcare Cloud Solutions
+          </div>
                             <div className="animate__animated animate__fadeInLeft">
-                                <h1 className="mb-2 text-3xl text-sky-900 font-extrabold md:text-3xl lg:text-5xl ml-10 px-2 text-left sm:px-0 sm:ml-0 sm:text-center">
+                                <h1 className="text-transparent animate-fade-in mb-2 text-3xl font-extrabold md:text-3xl lg:text-6xl ml-10 px-2 text-left sm:px-0 sm:ml-0 sm:text-center"
+                                 style={{ 
+                                    background: 'linear-gradient(to right, hsl(210, 40%, 15%), hsl(200, 98%, 39%))',
+                                    backgroundClip: 'text',
+                                    WebkitBackgroundClip: 'text',
+                                    animationDelay: '0.1s'
+                                  }}>
                                     Welcome to MediCloud.
                                 </h1>
                                 <p className="mx-auto max-w-[1000px] mb-4 text-md font-normal lg:text-md px-12 sm:px-48 text-sky-700 text-left sm:text-center">Safeguarding medical data with advanced encryption. Empowering healthcare with secure cloud solutions.</p>
